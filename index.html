@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qianqian Zhou</title>
+<meta name="description" content="Qianqian Zhou, Ph.D. student at UT Austin. Generative AI and foundation models for multi-scale subsurface characterization, from pore-scale digital rocks to basin-scale seismic.">
+<meta property="og:title" content="Qianqian Zhou · UT Austin">
+<meta property="og:description" content="Generative AI and foundation models for the subsurface, from pores to basins.">
+<meta property="og:image" content="https://zhouqianqianalana.github.io/images/profile.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, precise, scientific; a researcher's portfolio, not a template
+   IDEA: a scale bar, from micrometre pores to kilometre basins, as in her dissertation
+   PICTURE: her own generated pore network and SynSeis3D cubes placed on a log-scale axis
+   COLOUR and TYPE: white / deep ink, UT burnt orange accent, pore-render blue support; Manrope + Inter
+   LAYOUT: sticky nav, hero (intro + scale picture), research rows with large figures, then news, papers, talks, background */
+:root{color-scheme:light dark;
+ --bg:light-dark(#ffffff,#10151b);--ink:light-dark(#17212b,#e7eaee);--mut:light-dark(#5a6672,#9ba6b1);
+ --line:light-dark(#e5e8ec,#26303a);--band:light-dark(#f5f7f9,#151c24);
+ --acc:light-dark(#bf5700,#f08a3c);--sup:light-dark(#1f4e6b,#7fb6d8);--plate:#fff}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:var(--acc);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+h1,h2,h3{font-family:Manrope,Inter,system-ui,sans-serif;line-height:1.12;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.01em}
+h3{font-size:21px;font-weight:700}
+p{margin:0 0 12px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(4vw,18px)}
+.band{padding:clamp(48px,6vw,88px) 0}
+.alt{background:var(--band);border-block:1px solid var(--line)}
+.kicker{color:var(--acc);font-weight:600;font-size:15px;margin-bottom:8px}
+.lede{color:var(--mut);max-width:68ch;font-size:17px;margin-top:12px}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:6px 22px;flex-wrap:wrap;min-height:60px;padding-block:8px}
+nav.top .home{font-family:Manrope,sans-serif;font-weight:800;font-size:18px;color:var(--ink);text-decoration:none;margin-right:auto}
+nav.top .links{display:flex;flex-wrap:wrap;gap:2px 18px}
+nav.top .links a{color:var(--mut);text-decoration:none;font-weight:500;font-size:15px;padding:8px 0;min-height:40px;display:inline-flex;align-items:center}
+nav.top .links a:hover,nav.top .links a.on{color:var(--ink);box-shadow:inset 0 -2px var(--acc)}
+
+/* hero */
+.hero{padding:clamp(36px,5vw,72px) 0 clamp(28px,4vw,48px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,4vw,56px);align-items:center}
+.who{display:flex;gap:20px;align-items:center;margin-bottom:22px}
+.who img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--bg);box-shadow:0 0 0 2px var(--acc)}
+.who h1{font-size:clamp(32px,3.7vw,48px);white-space:nowrap;font-weight:800;letter-spacing:-.02em}
+.who .role{color:var(--mut);font-size:15.5px;margin-top:6px;line-height:1.45}
+.tag{font-size:clamp(19px,1.9vw,22px);line-height:1.45;margin-bottom:22px;max-width:34ch}
+.tag b{color:var(--acc);font-weight:600}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;font-weight:500;font-size:15px;background:var(--bg)}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{color:#fff;filter:brightness(1.08)}
+.btn svg{width:17px;height:17px;flex:none}
+.mail{color:var(--mut);font-size:14px;margin-top:12px}
+
+/* scale picture */
+.scale{position:relative}
+.objs{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end;gap:6px}
+.obj{text-align:center;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.obj img{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 18px rgba(10,20,30,.16))}
+.obj.pore img{width:112%;margin-left:-8%}
+.obj .cap{font-size:13.5px;color:var(--mut);margin-top:10px;line-height:1.35;min-height:4.1em}
+.obj .cap b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
+.axis{margin-top:14px;position:relative;height:56px}
+.axis svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.axis text{font:500 12.5px Inter,sans-serif;fill:var(--mut)}
+.axis .big{font:700 13px Manrope,sans-serif;fill:var(--ink)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
+.about p{font-size:17px}
+.facts{border-left:3px solid var(--acc);padding:4px 0 4px 20px;font-size:15px}
+.facts div{padding:7px 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border:0}
+.facts span{display:block;color:var(--mut);font-size:13.5px}
+
+/* research */
+.thesis{margin:18px 0 8px;font-family:Manrope,sans-serif;font-weight:700;font-size:19px}
+.obj-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--line)}
+.obj-row:first-of-type{margin-top:28px}
+.obj-row.flip .fig{order:2}
+.fig{margin:0}
+.plate{background:var(--plate);border:1px solid var(--line);border-radius:14px;padding:12px;overflow:hidden}
+.plate img{display:block;width:100%;height:auto}
+.fig figcaption{font-size:13.5px;color:var(--mut);margin-top:10px}
+.num{display:inline-block;font:700 13px Manrope,sans-serif;color:var(--acc);border:1.5px solid var(--acc);border-radius:999px;padding:2px 10px;margin-bottom:12px}
+.obj-row h3{font-size:clamp(22px,2.3vw,27px);margin-bottom:6px}
+.with{color:var(--mut);font-size:14.5px;margin-bottom:14px}
+.obj-row ul{padding-left:20px;margin:10px 0 14px}
+.obj-row li{margin:6px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{font-size:13px;font-weight:500;padding:5px 11px;border-radius:999px;background:color-mix(in srgb,var(--sup) 12%,transparent);color:var(--sup)}
+.chip.st{background:color-mix(in srgb,var(--acc) 13%,transparent);color:var(--acc)}
+.more{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-weight:500;font-size:15px}
+.earlier{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.card{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--bg)}
+.card h4{font:700 16.5px/1.3 Manrope,sans-serif;margin:0 0 4px}
+.card .when{color:var(--mut);font-size:13.5px;margin-bottom:8px}
+.card p{font-size:15px;margin:0}
+
+/* news */
+.news{list-style:none;padding:0;margin:26px 0 0;max-width:860px}
+.news li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:13px 0;border-bottom:1px solid var(--line)}
+.news time{font:700 14px Manrope,sans-serif;color:var(--acc);white-space:nowrap;padding-top:2px}
+.soon{font-size:12px;font-weight:600;color:#fff;background:var(--acc);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+
+/* publications */
+.grp{margin-top:34px}
+.grp>h3{font-size:17px;color:var(--mut);font-weight:700;margin-bottom:6px}
+.pub{display:grid;grid-template-columns:200px minmax(0,1fr);gap:22px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start}
+.pub.nothumb{grid-template-columns:minmax(0,1fr)}
+.pub .th{background:var(--plate);border:1px solid var(--line);border-radius:10px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.pub .th img{width:100%;height:100%;object-fit:contain;display:block}
+.pub .t{font:700 17px/1.35 Manrope,sans-serif;margin-bottom:4px;color:var(--ink)}
+.pub .a{font-size:14.5px;color:var(--mut)}
+.pub .a b{color:var(--ink);font-weight:600}
+.pub .v{font-size:14.5px;font-style:italic;margin-top:2px}
+.pub .s{display:inline-block;font-size:12.5px;font-weight:600;font-style:normal;color:var(--acc);margin-left:6px}
+.pub .l{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;font-weight:500;margin-top:6px}
+
+/* talks */
+.talks{width:100%;border-collapse:collapse;margin-top:24px;font-size:15px}
+.talks td{padding:12px 10px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.talks td:first-child{white-space:nowrap;color:var(--mut);width:110px}
+.talks .kind{display:inline-block;font-size:12.5px;font-weight:600;color:var(--sup);margin-left:4px}
+
+/* background */
+.bg3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:26px}
+.bg3 h3{font-size:18px;margin-bottom:12px}
+.ed{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.ed b{display:block;font-weight:600}
+.ed span{color:var(--mut);font-size:14px;display:block}
+.sk{font-size:15px}
+.sk div{padding:8px 0;border-bottom:1px solid var(--line)}
+.sk span{display:block;color:var(--mut);font-size:13.5px}
+
+footer{border-top:1px solid var(--line);padding:36px 0 44px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer .btns .btn{min-height:40px}
+
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion:no-preference){.obj img{animation:rise .9s ease-out both}.obj:nth-child(2) img{animation-delay:.12s}.obj:nth-child(3) img{animation-delay:.24s}@keyframes rise{from{opacity:.001;transform:translateY(14px)}to{opacity:1;transform:none}}}
+@media (max-width:900px){
+ .hero .wrap,.about,.obj-row{grid-template-columns:minmax(0,1fr)}
+ .obj-row.flip .fig{order:0}
+ .earlier,.bg3{grid-template-columns:minmax(0,1fr)}
+ .tag{max-width:none}
+}
+@media (max-width:600px){
+ body{font-size:16px}
+ .who img{width:82px;height:82px}
+ .pub{grid-template-columns:minmax(0,1fr);gap:12px}
+ .pub .th{max-width:260px}
+ .news li{grid-template-columns:minmax(0,1fr);gap:2px}
+ .talks td:first-child{width:auto}
+ .talks tr{display:grid;padding:10px 0;border-bottom:1px solid var(--line)}.talks td{border:0;padding:2px 0}
+ .obj .cap{font-size:12.5px}
+ .axis text{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top"><div class="wrap">
+  <a class="home" href="#top">Qianqian Zhou</a>
+  <div class="links">
+    <a href="#research">Research</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#talks">Talks</a><a href="#background">CV</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div>
+    <div class="who">
+      <img src="images/profile.jpg" alt="Portrait of Qianqian Zhou">
+      <div>
+        <h1>Qianqian Zhou</h1>
+        <div class="role">Ph.D. student · Petroleum &amp; Geosystems Engineering<br>The University of Texas at Austin</div>
+      </div>
+    </div>
+    <p class="tag">I build <b>generative models</b> and <b>foundation models</b> for the subsurface, from micrometre pores to kilometre-scale basins, trained on synthetic data whose realism is measured, not assumed.</p>
+    <div class="btns">
+      <a class="btn pri" href="mailto:qianqianzhou@utexas.edu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=nfAKDigAAAAJ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.6V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.4l-6 3.3-6-3.3z"/></svg>Scholar</a>
+      <a class="btn" href="https://github.com/zhouqianqianalana"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/qianqianzhou0325/"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>LinkedIn</a>
+      <a class="btn" href="https://orcid.org/0009-0002-8191-8827"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM8.3 17.3H6.7V9.2h1.6zM7.5 8.1a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm3.1 9.2V9.2h3.2c3 0 4.3 2.2 4.3 4.1 0 2.1-1.6 4-4.3 4zm1.6-1.5h1.5c2.2 0 2.7-1.7 2.7-2.6 0-1.4-.9-2.6-2.8-2.6h-1.4z"/></svg>ORCID</a>
+    </div>
+    <div class="mail">qianqianzhou@utexas.edu</div>
+  </div>
+
+  <figure class="scale" aria-label="From pore scale to basin scale">
+    <div class="objs">
+      <div class="obj pore"><img src="images/hero_pore.webp" alt="Generated 3D pore network from latent rectified flow"><div class="cap"><b>Pore scale</b>Generated 3D pore network</div></div>
+      <div class="obj"><img src="images/hero_geo.webp" alt="SynSeis3D geomodel with channels and faults"><div class="cap"><b>Basin scale</b>SynSeis3D geomodel</div></div>
+      <div class="obj"><img src="images/hero_seis.webp" alt="Forward-modeled synthetic 3D seismic volume"><div class="cap"><b>Seismic</b>Forward-modeled volume</div></div>
+    </div>
+    <div class="axis"><svg id="axis" role="img" aria-label="Length scale from one micrometre to one kilometre"></svg></div>
+  </figure>
+</div></header>
+
+<section class="band alt" id="about"><div class="wrap about">
+  <div>
+    <div class="kicker">About</div>
+    <h2>Making synthetic subsurface data good enough to learn from</h2>
+    <p style="margin-top:18px">I'm a Ph.D. student in the <a href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a> at UT Austin, co-advised by <a href="https://michaelpyrcz.com/">Prof. Michael J. Pyrcz</a> and <a href="https://sites.google.com/utexas.edu/masha/home">Prof. Maša Prodanović</a>.</p>
+    <p>Subsurface behavior is controlled at very different scales, yet representative, well-characterized data is scarce at all of them. Micro-CT scans are costly and cover only a small part of a rock's heterogeneity. Seismic data is abundant, but the interpretation labels are slow, subjective, and usually limited to one task. My research builds generators for both scales, measures how representative their output is, and trains models that learn and transfer from it.</p>
+    <p>I train these models at scale on <a href="https://tacc.utexas.edu/">TACC</a> supercomputers with PyTorch and PyTorch Lightning.</p>
+  </div>
+  <div class="facts">
+    <div><span>Dissertation</span>Multi-Scale Subsurface Characterization: Generative Digital Rocks and a Seismic Foundation Model</div>
+    <div><span>Research areas</span>Foundation models · Generative models · Synthetic data · Seismic interpretation · Digital rock physics · Uncertainty quantification</div>
+    <div><span>Supported by</span>DiReCT Consortium · Digital Porous Media IAP · TACC</div>
+  </div>
+</div></section>
+
+<section class="band" id="research"><div class="wrap">
+  <div class="kicker">Research</div>
+  <h2>Generate, characterize, then learn and transfer</h2>
+  <p class="lede">My dissertation tests whether synthetic data can fill the data gap at both the pore and the basin scale, if it is representative enough. It is organized into three objectives.</p>
+
+  <article class="obj-row">
+    <figure class="fig"><div class="plate"><img src="images/fig_rf_samples.jpg" alt="Six generated 3D pore structures and a voxel-wise Shannon entropy map from 500 samples" loading="lazy"></div>
+      <figcaption>Generated 3D pore structures (left) and voxel-wise Shannon entropy across 500 samples (right).</figcaption></figure>
+    <div>
+      <span class="num">Objective 1 · Pore scale</span>
+      <h3>Latent rectified flow for 3D digital rocks</h3>
+      <div class="with">With Runlong Liao, Maša Prodanović, and Michael J. Pyrcz</div>
+      <p>3D GANs tend to lose pore connectivity, and full-resolution 3D diffusion is computationally out of reach. I developed a two-stage latent generative framework:</p>
+      <ul>
+        <li>A <b>3D VAE</b> compresses 128³ rock volumes into a 16×32³ latent space with negligible reconstruction error.</li>
+        <li>A <b>rectified-flow ODE</b> generates new latents. Training is stable, and there are no diffusion schedules to tune.</li>
+        <li>It generates <b>a 3D Berea sandstone volume in about one second</b> on a single GPU.</li>
+      </ul>
+      <p>I evaluate the generated rocks on porosity, surface area, Euler characteristic, entropy-based uncertainty, and diversity. Next steps: conditioning on rock type and porosity across eleven sandstones, generating 256³ and 512³ volumes, and estimating network permeability.</p>
+      <div class="chips"><span class="chip">VAE</span><span class="chip">Rectified flow</span><span class="chip">Micro-CT</span><span class="chip st">Paper in preparation</span></div>
+    </div>
+  </article>
+
+  <article class="obj-row flip">
+    <figure class="fig"><div class="plate"><img src="images/synseis_workflow.jpg" alt="SynSeis3D seven-stage workflow: basement, intervals, bedding, channels, faults, rock properties, and seismic" loading="lazy"></div>
+      <figcaption>The seven SynSeis3D stages: basement, intervals, bedding, channels, faults, rock physics, and seismic.</figcaption></figure>
+    <div>
+      <span class="num">Objective 2 · Basin scale</span>
+      <h3>SynSeis3D: geology-aware synthetic seismic</h3>
+      <div class="with">With Misael M. Morales (ExxonMobil), Maša Prodanović, and Michael J. Pyrcz</div>
+      <p>An open procedural engine that builds geology step by step and forward-models the seismic. Every 3D volume comes with <b>co-registered labels for faults, channels, basement, and intervals</b>, with no manual annotation.</p>
+      <ul>
+        <li>Erosion-resolved sequence boundaries, onlap and truncation bedding, sinuous channels, and planar faults with consistent throw.</li>
+        <li>Depth-dependent rock physics, multi-frequency wavelets, attenuation, and migration-like noise.</li>
+        <li>A 230-volume corpus, characterized and compared with the <b>F3</b> and <b>Parihaka</b> field surveys.</li>
+      </ul>
+      <div class="chips"><span class="chip">Procedural geology</span><span class="chip">Forward modeling</span><span class="chip st">Submitted to Computers &amp; Geosciences</span></div>
+      <div class="more"><a href="https://github.com/zhouqianqianalana/SynSeis3D">Code on GitHub →</a></div>
+    </div>
+  </article>
+
+  <article class="obj-row">
+    <figure class="fig"><div class="plate"><img src="images/sfm_segmentation.jpg" alt="Ground truth and predicted basement, channel, and fault segmentations on a synthetic seismic section" loading="lazy"></div>
+      <figcaption>Ground truth vs. predictions for basement, channels, and faults on a held-out synthetic section.</figcaption></figure>
+    <div>
+      <span class="num">Objective 3 · Learn &amp; transfer</span>
+      <h3>A foundation model for seismic interpretation</h3>
+      <div class="with">With Misael M. Morales (ExxonMobil), Maša Prodanović, and Michael J. Pyrcz</div>
+      <p>Can synthetic data produce <b>reusable seismic representations that transfer to real surveys?</b> As a first result, a frozen SAM ViT-B encoder with a shared trunk and four task heads learns all four interpretation tasks jointly from about 12k synthetic slices. Basement reaches about 0.97 IoU, and the other tasks reach 0.55–0.65.</p>
+      <ul>
+        <li>Compare encoders (ResNet, ViT, SAM, SegFormer, DINO) and seismic-specific pretraining.</li>
+        <li>Test parameter-efficient adaptation (adapters, LoRA) against full fine-tuning.</li>
+        <li>Transfer from synthetic to field data on F3 and Parihaka, zero-shot and few-shot.</li>
+      </ul>
+      <div class="chips"><span class="chip">SAM ViT</span><span class="chip">Multi-task learning</span><span class="chip">LoRA</span><span class="chip st">IMAGE '26</span></div>
+    </div>
+  </article>
+
+  <h3 style="margin-top:28px">Earlier work</h3>
+  <div class="earlier">
+    <div class="card"><h4>3D flow fields in fractures (MS-Net)</h4><div class="when">UT Austin · 2025 · warm-up project</div><p>Predicted 3D velocity fields from fracture geometry with a multiscale network trained on lattice-Boltzmann simulations. Poster at IMAGE '25.</p></div>
+    <div class="card"><h4>Micro-proppant transport (CFD–DEM)</h4><div class="when">China Univ. of Petroleum, Beijing · 2022–2024</div><p>Key Python developer of a CFD–DEM fracture module for an NSFC project. Five papers, three conference talks, and a patent application.</p></div>
+    <div class="card"><h4>Proppant transport by supercritical CO₂</h4><div class="when">Southwest Petroleum Univ. · 2020–2021</div><p>Undergraduate thesis: CO₂ properties from the Span–Wagner equation of state, and proppant migration in branched fractures.</p></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="news"><div class="wrap">
+  <div class="kicker">News</div>
+  <h2>Recent updates</h2>
+  <ul class="news">
+    <li><time>Nov 2026</time><div>Ph.D. proposal exam: <i>Multi-Scale Subsurface Characterization: Generative Digital Rocks and Seismic Foundation Model</i>, Nov 19.<span class="soon">Upcoming</span></div></li>
+    <li><time>2026</time><div><i>SynSeis3D</i> paper submitted to <i>Computers &amp; Geosciences</i>.</div></li>
+    <li><time>Oct 2026</time><div>Presented <i>Toward a Synthetic Foundation Model for Seismic Interpretation</i> at the S&amp;P Global Energy Update Meeting.</div></li>
+    <li><time>May 2026</time><div>Presented <i>Latent Diffusion with Rectified Flow for 3D Porous Media</i> at the DiReCT Consortium 7th Annual Meeting.</div></li>
+    <li><time>Dec 2025</time><div>Oral presentation at <b>AGU 2025</b>, New Orleans, on discrete spatial diffusion for rock image generation.</div></li>
+    <li><time>Aug 2025</time><div>Poster at <b>IMAGE '25</b>, Houston, on 3D flow prediction in fractures with MS-Net.</div></li>
+    <li><time>Aug 2024</time><div>Started my Ph.D. at UT Austin.</div></li>
+  </ul>
+</div></section>
+
+<section class="band" id="publications"><div class="wrap">
+  <div class="kicker">Publications</div>
+  <h2>Papers and abstracts</h2>
+  <p class="lede">Full list on <a href="https://scholar.google.com/citations?user=nfAKDigAAAAJ">Google Scholar</a>.</p>
+
+  <div class="grp"><h3>Submitted &amp; in preparation</h3>
+    <div class="pub"><div class="th"><img src="images/synseis_workflow.jpg" alt="" loading="lazy"></div><div>
+      <div class="t">SYNSEIS3D: An Open Procedural Engine and Multi-Task Labeled Dataset of Synthetic 3-D Seismic Volumes</div>
+      <div class="a"><b>Q. Zhou</b>, M. M. Morales, M. Prodanović, M. J. Pyrcz</div>
+      <div class="v">Computers &amp; Geosciences <span class="s">Submitted 2026</span></div>
+      <div class="l"><a href="https://github.com/zhouqianqianalana/SynSeis3D">Code</a></div></div></div>
+    <div class="pub"><div class="th"><img src="images/hero_pore.webp" alt="" loading="lazy"></div><div>
+      <div class="t">Latent Rectified Flow for Three-Dimensional Porous Media: Reconstruction and Physical-Fidelity Diagnostics</div>
+      <div class="a"><b>Q. Zhou</b>, M. Prodanović, M. J. Pyrcz</div>
+      <div class="v"><span class="s" style="margin:0">In preparation, 2026</span></div></div></div>
+  </div>
+
+  <div class="grp"><h3>Conference abstracts</h3>
+    <div class="pub"><div class="th"><img src="images/fig_sfm_arch.jpg" alt="" loading="lazy"></div><div>
+      <div class="t">Toward a Synthetic Foundation Model for Seismic Interpretation Using Forward-Modeled Seismic Data</div>
+      <div class="a"><b>Q. Zhou</b>, M. M. Morales, M. Prodanović, M. J. Pyrcz</div>
+      <div class="v">International Meeting for Applied Geoscience &amp; Energy (IMAGE '26), 2026</div></div></div>
+    <div class="pub"><div class="th"><img src="images/dsd_diffusion.jpg" alt="" loading="lazy"></div><div>
+      <div class="t">Discrete Spatial Diffusion Framework and Assessment Metrics for Rock Image Generation</div>
+      <div class="a"><b>Q. Zhou</b>, J. E. Santos, A. Marcato, M. Prodanović, M. J. Pyrcz</div>
+      <div class="v">AGU Fall Meeting, H52C-04, New Orleans, 2025 <span class="s">Oral</span></div></div></div>
+    <div class="pub nothumb"><div>
+      <div class="t">Prediction of 3D Fluid Velocity Fields in Fractured Media Using Multiscale Network for Hierarchical Regression (MS-Net)</div>
+      <div class="a"><b>Q. Zhou</b>, X. Ma, M. Prodanović, M. J. Pyrcz</div>
+      <div class="v">IMAGE '25, Houston, 2025 <span class="s">Poster</span></div></div></div>
+  </div>
+
+  <div class="grp"><h3>Journal &amp; proceedings papers</h3>
+    <div class="pub nothumb"><div>
+      <div class="t">Modeling of micro-proppant transport in rough secondary fractures using supercritical CO₂</div>
+      <div class="a">Y. Zhang, <b>Q. Zhou</b>, B. Fan, B. Wang, H. Wang, Y. Zhu, M. Zhou, Y. Zheng</div>
+      <div class="v">Powder Technology, 122341, 2026</div></div></div>
+    <div class="pub nothumb"><div>
+      <div class="t">Study of proppant plugging in narrow rough fracture based on CFD–DEM method</div>
+      <div class="a">Z. Yang, M. Zhou, X. Song, Z. Xu, Y. Zheng, <b>Q. Zhou</b>, B. Wang</div>
+      <div class="v">Powder Technology, 442, 119861, 2024</div></div></div>
+    <div class="pub nothumb"><div>
+      <div class="t">CFD-DEM modeling and analysis study of proppant transport in rough fracture</div>
+      <div class="a">M. Zhou, Z. Yang, Z. Xu, X. Song, B. Wang, Y. Zheng, <b>Q. Zhou</b>, G. Li</div>
+      <div class="v">Powder Technology, 436, 119461, 2024</div></div></div>
+    <div class="pub nothumb"><div>
+      <div class="t">CFD-DEM simulation analysis of the effect of sweep stages on proppant placement within rough fracture</div>
+      <div class="a">X. Song, Z. Yang, M. Zhou, Z. Xu, <b>Q. Zhou</b>, H. A. Abderrahmane, B. Wang, Y. Zheng</div>
+      <div class="v">SPE Gas &amp; Oil Technology Showcase and Conference, D021S025R001, 2024</div></div></div>
+    <div class="pub nothumb"><div>
+      <div class="t">Modeling and analysis of micro proppant transport and deposition in rough fracture networks</div>
+      <div class="a"><b>Q. Zhou</b>, H. Wang, B. Wang, Y. Zheng, S. Stanchits, A. Cheremisin</div>
+      <div class="v">ARMA US Rock Mechanics/Geomechanics Symposium, ARMA-2023-0459, 2023</div></div></div>
+  </div>
+
+  <div class="grp"><h3>Patent</h3>
+    <div class="pub nothumb"><div>
+      <div class="t">Visual experimental device and method for proppant transport and conductivity test</div>
+      <div class="a">B. Wang, <b>Q. Zhou</b>, H. Wang</div>
+      <div class="v">China Invention Patent Application No. 202310192650X</div></div></div>
+  </div>
+</div></section>
+
+<section class="band alt" id="talks"><div class="wrap">
+  <div class="kicker">Talks</div>
+  <h2>Presentations</h2>
+  <table class="talks">
+    <tr><td>Oct 2026</td><td>Toward a Synthetic Foundation Model for Seismic Interpretation Using Forward-Modeled Seismic Data<br><span style="color:var(--mut)">S&amp;P Global Energy Update Meeting</span></td></tr>
+    <tr><td>May 2026</td><td>Latent Diffusion with Rectified Flow for 3D Porous Media Reconstruction and Evaluation<br><span style="color:var(--mut)">DiReCT Consortium 7th Annual Meeting</span></td></tr>
+    <tr><td>Dec 2025</td><td>Discrete Spatial Diffusion Framework and Assessment Metrics for Rock Image Generation <span class="kind">Oral</span><br><span style="color:var(--mut)">AGU Fall Meeting, New Orleans, LA</span></td></tr>
+    <tr><td>Aug 2025</td><td>Prediction of 3D Fluid Velocity Fields in Fractured Media Using MS-Net <span class="kind">Poster</span><br><span style="color:var(--mut)">IMAGE '25, Houston, TX</span></td></tr>
+    <tr><td>May 2024</td><td>Modeling of micro-particle in supercritical CO₂ over rough fractures <span class="kind">Oral</span><br><span style="color:var(--mut)">InterPore 2024, Qingdao, China</span></td></tr>
+    <tr><td>Aug 2023</td><td>Numerical simulation of the migration and deposition of micro proppant over rough fractures<br><span style="color:var(--mut)">SIMPAS 2023, Suzhou, China</span></td></tr>
+    <tr><td>May 2023</td><td>Particle deposition and clogging over rough natural fractures with surface attachments <span class="kind">Oral</span><br><span style="color:var(--mut)">InterPore 2023, Edinburgh, UK</span></td></tr>
+  </table>
+</div></section>
+
+<section class="band" id="background"><div class="wrap">
+  <div class="kicker">CV</div>
+  <h2>Background</h2>
+  <div class="bg3">
+    <div><h3>Education</h3>
+      <div class="ed"><b>Ph.D., Petroleum &amp; Geosystems Engineering</b>The University of Texas at Austin<span>2024 – present</span></div>
+      <div class="ed"><b>M.Eng., Petroleum &amp; Natural Gas Engineering</b>China University of Petroleum, Beijing<span>2021 – 2024 · GPA 4.30/5.00 · ranked 2/83</span></div>
+      <div class="ed"><b>B.Eng., Petroleum &amp; Natural Gas Engineering</b>Southwest Petroleum University<span>2017 – 2021 · GPA 4.03/5.00 · ranked 2/308</span></div>
+    </div>
+    <div><h3>Teaching</h3>
+      <div class="ed"><b>Teaching Assistant, PGE 311</b>Numerical Methods &amp; Programming, UT Austin<span>Fall 2025 · 90+ undergraduates · weekly office hours and grading</span></div>
+    </div>
+    <div><h3>Skills</h3>
+      <div class="sk">
+        <div><span>AI / ML</span>Vision foundation models (SAM ViT), multi-task learning, diffusion and rectified flow, VAEs</div>
+        <div><span>Programming</span>Python, PyTorch, PyTorch Lightning, NumPy, SciPy, pandas</div>
+        <div><span>HPC</span>TACC, SLURM, memory and performance debugging for large 3D workloads</div>
+        <div><span>Simulation</span>Synthetic geomodeling, seismic forward modeling, CFD–DEM, LBM</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>© 2026 Qianqian Zhou · Austin, Texas · qianqianzhou@utexas.edu</div>
+  <div class="btns">
+    <a class="btn" href="mailto:qianqianzhou@utexas.edu">Email</a>
+    <a class="btn" href="https://scholar.google.com/citations?user=nfAKDigAAAAJ">Scholar</a>
+    <a class="btn" href="https://github.com/zhouqianqianalana">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/qianqianzhou0325/">LinkedIn</a>
+  </div>
+</div></footer>
+
+<script>
+{
+  const s=document.getElementById('axis');
+  const sup=['⁻⁶','⁻⁵','⁻⁴','⁻³','⁻²','⁻¹','⁰','¹','²','³'];
+  const draw=()=>{
+    const W=s.clientWidth,H=s.clientHeight,pad=10,y=14;
+    const x=i=>pad+(W-2*pad)*i/9;
+    const narrow=W<420;
+    let h=`<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="var(--sup)"/><stop offset="1" stop-color="var(--acc)"/></linearGradient></defs>`;
+    h+=`<line x1="${pad}" x2="${W-pad}" y1="${y}" y2="${y}" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>`;
+    for(let i=0;i<10;i++){
+      const major=i%3===0;
+      h+=`<line x1="${x(i)}" x2="${x(i)}" y1="${y-(major?7:4)}" y2="${y+(major?7:4)}" stroke="${i<5?'var(--sup)':'var(--acc)'}" stroke-width="${major?2:1.3}"/>`;
+      if(major||!narrow) h+=`<text x="${x(i)}" y="${y+24}" text-anchor="middle">10${sup[i]} m</text>`;
+    }
+    const lab=narrow?[['1 µm',0],['1 mm',3],['1 m',6],['1 km',9]]:[['1 µm · pores',0],['1 mm',3],['1 m · wells',6],['1 km · basins',9]];
+    lab.forEach(([t,i])=>{const a=i===0?'start':i===9?'end':'middle';h+=`<text class="big" x="${x(i)}" y="${y+44}" text-anchor="${a}">${t}</text>`});
+    s.innerHTML=h;
+  };
+  new ResizeObserver(draw).observe(s);draw();
+
+  const links=[...document.querySelectorAll('nav.top .links a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(x=>x&&io.observe(x));
+}
+</script>
+</body>
+</html>
