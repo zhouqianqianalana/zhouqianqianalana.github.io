@@ -108,6 +108,15 @@ nav.top .links a:hover,nav.top .links a.on{color:var(--ink);box-shadow:inset 0 -
 .card .when{color:var(--mut);font-size:13.5px;margin-bottom:8px}
 .card p{font-size:15px;margin:0}
 
+.job{display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-top:26px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,3vw,32px);max-width:980px}
+.job .logo{width:150px;height:96px;border-radius:12px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:14px}
+.job .logo img{max-width:100%;max-height:100%;display:block}
+.job .logo .mono{display:none;font:800 30px Manrope,sans-serif;color:#17212b;letter-spacing:.02em}
+.job .logo.nologo .mono{display:block}
+.job h3{font-size:21px}
+.job .co{color:var(--mut);font-size:15px;margin:4px 0 10px}
+.job ul{margin:0;padding-left:20px}.job li{margin:6px 0}
+@media(max-width:600px){.job{grid-template-columns:minmax(0,1fr)}.job .logo{width:130px;height:80px}}
 /* news */
 .news{list-style:none;padding:0;margin:26px 0 0;max-width:860px}
 .news li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:13px 0;border-bottom:1px solid var(--line)}
@@ -174,7 +183,7 @@ footer .btns .btn{min-height:40px}
 <nav class="top"><div class="wrap">
   <a class="home" href="#top">Qianqian Zhou</a>
   <div class="links">
-    <a href="#projects">Projects</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#talks">Talks</a><a href="files/CV_QianqianZhou.pdf">CV</a>
+    <a href="#projects">Projects</a><a href="#industry">Industry</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#talks">Talks</a><a href="files/CV_QianqianZhou.pdf">CV</a>
   </div>
 </div></nav>
 
@@ -184,10 +193,9 @@ footer .btns .btn{min-height:40px}
       <img src="images/profile.jpg" alt="Portrait of Qianqian Zhou">
       <div>
         <h1>Qianqian Zhou</h1>
-        <div class="role">Ph.D. student · Petroleum &amp; Geosystems Engineering<br>The University of Texas at Austin</div>
+        <div class="role">Ph.D. student · Petroleum &amp; Geosystems Engineering<br>The University of Texas at Austin · expected 2028</div>
       </div>
     </div>
-    <p class="tag">I build <b>generative models</b> and <b>foundation models</b> for the subsurface, from micrometre pores to kilometre-scale basins, trained on synthetic data whose realism is measured, not assumed.</p>
     <div class="btns">
       <a class="btn pri" href="mailto:qianqianzhou@utexas.edu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
       <a class="btn" href="files/CV_QianqianZhou.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>CV</a>
@@ -213,13 +221,12 @@ footer .btns .btn{min-height:40px}
   <div>
     <div class="kicker">About</div>
     <p>I'm a Ph.D. student in the <a href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a> at UT Austin, co-advised by <a href="https://michaelpyrcz.com/">Prof. Michael J. Pyrcz</a> and <a href="https://sites.google.com/utexas.edu/masha/home">Prof. Maša Prodanović</a>.</p>
-    <p>Good subsurface data is scarce at every scale. I build generators that create realistic synthetic data, from rock pores to seismic volumes, and train AI models that learn from it.</p>
+    <p>Good subsurface data is scarce at every scale. I build <b>generative models</b> and <b>foundation models</b> for the subsurface: generators that create realistic synthetic data, from micrometre rock pores to kilometre-scale seismic volumes, and AI models that learn from it and carry over to real data.</p>
   </div>
   <div class="facts">
     <div><span>Advisors</span>Michael J. Pyrcz · Maša Prodanović</div>
-    <div><span>Research areas</span>Foundation models · Generative models · Synthetic data · Seismic interpretation · Digital rock physics · Uncertainty quantification</div>
-    <div><span>Supported by</span>DiReCT Consortium · Digital Porous Media IAP · TACC</div>
-  </div>
+    <div><span>Research areas</span>Foundation models · Multimodal learning · Generative AI · Seismic interpretation · Digital rocks</div>
+      </div>
 </div></section>
 
 <section class="band" id="projects"><div class="wrap">
@@ -234,7 +241,7 @@ footer .btns .btn{min-height:40px}
       <span class="num">Digital rocks</span>
       <h3>Latent rectified flow for 3D digital rocks</h3>
       <p>A 3D VAE + rectified-flow model that generates realistic 3D rock microstructures in <b>about one second per volume</b> on a single GPU, evaluated on porosity, topology, uncertainty, and diversity.</p>
-      <div class="chips"><span class="chip">VAE</span><span class="chip">Rectified flow</span><span class="chip">Micro-CT</span><span class="chip st">Paper in preparation</span></div>
+      <div class="chips"><span class="chip">VAE</span><span class="chip">Rectified flow</span><span class="chip">Micro-CT</span></div>
     </div>
   </article>
 
@@ -245,7 +252,7 @@ footer .btns .btn{min-height:40px}
       <span class="num">Synthetic seismic</span>
       <h3>SynSeis3D: geology-aware synthetic seismic</h3>
       <p>An open engine that builds 3D geology and forward-models the seismic, with <b>aligned labels for faults, channels, basement, and intervals</b> and no manual annotation.</p>
-      <div class="chips"><span class="chip">Procedural geology</span><span class="chip">Forward modeling</span><span class="chip st">Submitted to Computers &amp; Geosciences</span></div>
+      <div class="chips"><span class="chip">Procedural geology</span><span class="chip">Forward modeling</span></div>
       <div class="more"><a href="https://github.com/zhouqianqianalana/SynSeis3D">Code on GitHub →</a></div>
     </div>
   </article>
@@ -257,54 +264,58 @@ footer .btns .btn{min-height:40px}
       <span class="num">Seismic AI</span>
       <h3>A foundation model for seismic interpretation</h3>
       <p>A multi-task seismic interpretation model built on vision foundation models (SAM ViT) and trained on SynSeis3D data, aiming to <b>transfer to real field surveys</b>.</p>
-      <div class="chips"><span class="chip">SAM ViT</span><span class="chip">Multi-task learning</span><span class="chip">LoRA</span><span class="chip st">IMAGE '26</span></div>
+      <div class="chips"><span class="chip">SAM ViT</span><span class="chip">Multi-task learning</span><span class="chip">LoRA</span></div>
     </div>
   </article>
 
   <h3 style="margin-top:28px">Earlier projects</h3>
   <div class="earlier">
-    <div class="card"><h4>3D flow fields in fractures (MS-Net)</h4><div class="when">UT Austin · 2025 · warm-up project</div><p>Neural prediction of 3D flow in fractures.</p></div>
+    <div class="card"><h4>3D flow fields in fractures (MS-Net)</h4><div class="when">UT Austin · 2025</div><p>Neural prediction of 3D flow in fractures.</p></div>
     <div class="card"><h4>Micro-proppant transport (CFD–DEM)</h4><div class="when">China Univ. of Petroleum, Beijing · 2022–2024</div><p>CFD–DEM simulation of proppant in rough fractures.</p></div>
     <div class="card"><h4>Proppant transport by supercritical CO₂</h4><div class="when">Southwest Petroleum Univ. · 2020–2021</div><p>Undergraduate thesis on proppant transport.</p></div>
   </div>
 </div></section>
 
-<section class="band alt" id="news"><div class="wrap">
+<section class="band alt" id="industry"><div class="wrap">
+  <div class="kicker">Industry experience</div>
+  <h2>Where I've worked</h2>
+  <div class="job">
+    <div class="logo"><img src="images/logo_tgs.png" alt="TGS logo" onerror="this.parentNode.classList.add('nologo');this.remove()"><span class="mono">TGS</span></div>
+    <div>
+      <h3>Data Science Intern, Research &amp; Technology</h3>
+      <div class="co">TGS · May – Aug 2026</div>
+      <ul>
+        <li>Sped up the SynthoSeis synthetic seismic generator <b>4.8×</b> (58 → 12 minutes per model).</li>
+        <li>Redesigned 3D fault generation and added multi-scale channel modeling, producing 550 fault and 400 channel volumes for FaultNet and ChannelNet training.</li>
+        <li>Improved fault continuity on multiple field datasets by training with the new synthetic data.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="band" id="news"><div class="wrap">
   <div class="kicker">News</div>
   <h2>Recent updates</h2>
   <ul class="news">
-    <li><time>Nov 2026</time><div>Ph.D. proposal exam: <i>Multi-Scale Subsurface Characterization: Generative Digital Rocks and Seismic Foundation Model</i>, Nov 19.<span class="soon">Upcoming</span></div></li>
-    <li><time>2026</time><div><i>SynSeis3D</i> paper submitted to <i>Computers &amp; Geosciences</i>.</div></li>
-    <li><time>Oct 2026</time><div>Presented <i>Toward a Synthetic Foundation Model for Seismic Interpretation</i> at the S&amp;P Global Energy Update Meeting.</div></li>
-    <li><time>May 2026</time><div>Presented <i>Latent Diffusion with Rectified Flow for 3D Porous Media</i> at the DiReCT Consortium 7th Annual Meeting.</div></li>
+    <li><time>Aug 2026</time><div>Poster at <b>IMAGE '26</b>, Houston, on a synthetic foundation model for seismic interpretation.</div></li>
     <li><time>Dec 2025</time><div>Oral presentation at <b>AGU 2025</b>, New Orleans, on discrete spatial diffusion for rock image generation.</div></li>
     <li><time>Aug 2025</time><div>Poster at <b>IMAGE '25</b>, Houston, on 3D flow prediction in fractures with MS-Net.</div></li>
     <li><time>Aug 2024</time><div>Started my Ph.D. at UT Austin.</div></li>
+    <li><time>Jun 2024</time><div>Received my M.Eng. in Petroleum &amp; Natural Gas Engineering from <b>China University of Petroleum, Beijing</b> (ranked 2/83).</div></li>
+    <li><time>Jun 2021</time><div>Received my B.Eng. in Petroleum &amp; Natural Gas Engineering from <b>Southwest Petroleum University</b> (ranked 2/308).</div></li>
   </ul>
 </div></section>
 
-<section class="band" id="publications"><div class="wrap">
+<section class="band alt" id="publications"><div class="wrap">
   <div class="kicker">Publications</div>
   <h2>Papers and abstracts</h2>
   <p class="lede">Full list on <a href="https://scholar.google.com/citations?user=nfAKDigAAAAJ">Google Scholar</a>.</p>
-
-  <div class="grp"><h3>Submitted &amp; in preparation</h3>
-    <div class="pub"><div class="th"><img src="images/synseis_workflow.jpg" alt="" loading="lazy"></div><div>
-      <div class="t">SYNSEIS3D: An Open Procedural Engine and Multi-Task Labeled Dataset of Synthetic 3-D Seismic Volumes</div>
-      <div class="a"><b>Q. Zhou</b>, M. M. Morales, M. Prodanović, M. J. Pyrcz</div>
-      <div class="v">Computers &amp; Geosciences <span class="s">Submitted 2026</span></div>
-      <div class="l"><a href="https://github.com/zhouqianqianalana/SynSeis3D">Code</a></div></div></div>
-    <div class="pub"><div class="th"><img src="images/hero_pore.webp" alt="" loading="lazy"></div><div>
-      <div class="t">Latent Rectified Flow for Three-Dimensional Porous Media: Reconstruction and Physical-Fidelity Diagnostics</div>
-      <div class="a"><b>Q. Zhou</b>, M. Prodanović, M. J. Pyrcz</div>
-      <div class="v"><span class="s" style="margin:0">In preparation, 2026</span></div></div></div>
-  </div>
 
   <div class="grp"><h3>Conference abstracts</h3>
     <div class="pub"><div class="th"><img src="images/fig_sfm_arch.jpg" alt="" loading="lazy"></div><div>
       <div class="t">Toward a Synthetic Foundation Model for Seismic Interpretation Using Forward-Modeled Seismic Data</div>
       <div class="a"><b>Q. Zhou</b>, M. M. Morales, M. Prodanović, M. J. Pyrcz</div>
-      <div class="v">International Meeting for Applied Geoscience &amp; Energy (IMAGE '26), 2026</div></div></div>
+      <div class="v">IMAGE '26, Houston, 2026 <span class="s">Poster</span></div></div></div>
     <div class="pub"><div class="th"><img src="images/dsd_diffusion.jpg" alt="" loading="lazy"></div><div>
       <div class="t">Discrete Spatial Diffusion Framework and Assessment Metrics for Rock Image Generation</div>
       <div class="a"><b>Q. Zhou</b>, J. E. Santos, A. Marcato, M. Prodanović, M. J. Pyrcz</div>
@@ -346,12 +357,11 @@ footer .btns .btn{min-height:40px}
   </div>
 </div></section>
 
-<section class="band alt" id="talks"><div class="wrap">
+<section class="band" id="talks"><div class="wrap">
   <div class="kicker">Talks</div>
   <h2>Presentations</h2>
   <table class="talks">
-    <tr><td>Oct 2026</td><td>Toward a Synthetic Foundation Model for Seismic Interpretation Using Forward-Modeled Seismic Data<br><span style="color:var(--mut)">S&amp;P Global Energy Update Meeting</span></td></tr>
-    <tr><td>May 2026</td><td>Latent Diffusion with Rectified Flow for 3D Porous Media Reconstruction and Evaluation<br><span style="color:var(--mut)">DiReCT Consortium 7th Annual Meeting</span></td></tr>
+    <tr><td>Aug 2026</td><td>Toward a Synthetic Foundation Model for Seismic Interpretation Using Forward-Modeled Seismic Data <span class="kind">Poster</span><br><span style="color:var(--mut)">IMAGE '26, Houston, TX</span></td></tr>
     <tr><td>Dec 2025</td><td>Discrete Spatial Diffusion Framework and Assessment Metrics for Rock Image Generation <span class="kind">Oral</span><br><span style="color:var(--mut)">AGU Fall Meeting, New Orleans, LA</span></td></tr>
     <tr><td>Aug 2025</td><td>Prediction of 3D Fluid Velocity Fields in Fractured Media Using MS-Net <span class="kind">Poster</span><br><span style="color:var(--mut)">IMAGE '25, Houston, TX</span></td></tr>
     <tr><td>May 2024</td><td>Modeling of micro-particle in supercritical CO₂ over rough fractures <span class="kind">Oral</span><br><span style="color:var(--mut)">InterPore 2024, Qingdao, China</span></td></tr>
@@ -360,24 +370,25 @@ footer .btns .btn{min-height:40px}
   </table>
 </div></section>
 
-<section class="band" id="background"><div class="wrap">
+<section class="band alt" id="background"><div class="wrap">
   <div class="kicker">Background</div>
-  <h2>Education &amp; experience</h2>
+  <h2>Education &amp; skills</h2>
   <p class="lede"><a href="files/CV_QianqianZhou.pdf">Download my full CV (PDF)</a></p>
   <div class="bg3">
     <div><h3>Education</h3>
-      <div class="ed"><b>Ph.D., Petroleum &amp; Geosystems Engineering</b>The University of Texas at Austin<span>2024 – present</span></div>
+      <div class="ed"><b>Ph.D., Petroleum &amp; Geosystems Engineering</b>The University of Texas at Austin<span>2024 – 2028 (expected) · GPA 3.87/4.00</span></div>
       <div class="ed"><b>M.Eng., Petroleum &amp; Natural Gas Engineering</b>China University of Petroleum, Beijing<span>2021 – 2024 · GPA 4.30/5.00 · ranked 2/83</span></div>
       <div class="ed"><b>B.Eng., Petroleum &amp; Natural Gas Engineering</b>Southwest Petroleum University<span>2017 – 2021 · GPA 4.03/5.00 · ranked 2/308</span></div>
     </div>
-    <div><h3>Teaching</h3>
-      <div class="ed"><b>Teaching Assistant, PGE 311</b>Numerical Methods &amp; Programming, UT Austin<span>Fall 2025 · 90+ undergraduates · weekly office hours and grading</span></div>
+    <div><h3>Experience</h3>
+      <div class="ed"><b>Graduate Research Assistant, UT Austin</b>Foundation models and generative AI for subsurface data<span>2024 – present</span></div>
+      <div class="ed"><b>Teaching Assistant, PGE 311</b>Numerical Methods &amp; Programming, UT Austin<span>Fall 2025 · 90+ undergraduates</span></div>
     </div>
     <div><h3>Skills</h3>
       <div class="sk">
-        <div><span>AI / ML</span>Vision foundation models (SAM ViT), multi-task learning, diffusion and rectified flow, VAEs</div>
+        <div><span>AI / ML</span>Foundation models, VLMs, multimodal learning, generative models, physics-informed ML</div>
         <div><span>Programming</span>Python, PyTorch, PyTorch Lightning, NumPy, SciPy, pandas</div>
-        <div><span>HPC</span>TACC, SLURM, memory and performance debugging for large 3D workloads</div>
+        <div><span>HPC / Systems</span>Linux, SLURM, TACC HPC, GPU computing</div>
         <div><span>Simulation</span>Synthetic geomodeling, seismic forward modeling, CFD–DEM, LBM</div>
       </div>
     </div>
@@ -415,7 +426,7 @@ footer .btns .btn{min-height:40px}
   };
   new ResizeObserver(draw).observe(s);draw();
 
-  const links=[...document.querySelectorAll('nav.top .links a')];
+  const links=[...document.querySelectorAll('nav.top .links a')].filter(a=>a.getAttribute('href').startsWith('#'));
   const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(x=>x&&io.observe(x));
