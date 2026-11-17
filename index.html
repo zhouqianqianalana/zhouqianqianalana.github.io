@@ -49,6 +49,7 @@ nav.top .links a:hover,nav.top .links a.on{color:var(--ink);box-shadow:inset 0 -
 .hero{padding:clamp(36px,5vw,72px) 0 clamp(28px,4vw,48px)}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,4vw,56px);align-items:center}
 .who{display:flex;gap:20px;align-items:center;margin-bottom:22px}
+#about .wrap>div>p:first-of-type{margin-top:14px}
 .who img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--bg);box-shadow:0 0 0 2px var(--acc)}
 .who h1{font-size:clamp(32px,3.7vw,48px);white-space:nowrap;font-weight:800;letter-spacing:-.02em}
 .who .role{color:var(--mut);font-size:15.5px;margin-top:6px;line-height:1.45}
@@ -85,7 +86,7 @@ nav.top .links a:hover,nav.top .links a.on{color:var(--ink);box-shadow:inset 0 -
 
 /* research */
 .thesis{margin:18px 0 8px;font-family:Manrope,sans-serif;font-weight:700;font-size:19px}
-.obj-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--line)}
+.obj-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(24px,3vw,36px) 0;border-top:1px solid var(--line)}
 .obj-row:first-of-type{margin-top:28px}
 .obj-row.flip .fig{order:2}
 .fig{margin:0}
@@ -173,7 +174,7 @@ footer .btns .btn{min-height:40px}
 <nav class="top"><div class="wrap">
   <a class="home" href="#top">Qianqian Zhou</a>
   <div class="links">
-    <a href="#research">Research</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#talks">Talks</a><a href="#background">CV</a>
+    <a href="#projects">Projects</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#talks">Talks</a><a href="files/CV_QianqianZhou.pdf">CV</a>
   </div>
 </div></nav>
 
@@ -189,6 +190,7 @@ footer .btns .btn{min-height:40px}
     <p class="tag">I build <b>generative models</b> and <b>foundation models</b> for the subsurface, from micrometre pores to kilometre-scale basins, trained on synthetic data whose realism is measured, not assumed.</p>
     <div class="btns">
       <a class="btn pri" href="mailto:qianqianzhou@utexas.edu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+      <a class="btn" href="files/CV_QianqianZhou.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>CV</a>
       <a class="btn" href="https://scholar.google.com/citations?user=nfAKDigAAAAJ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.6V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.4l-6 3.3-6-3.3z"/></svg>Scholar</a>
       <a class="btn" href="https://github.com/zhouqianqianalana"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/qianqianzhou0325/"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>LinkedIn</a>
@@ -210,54 +212,39 @@ footer .btns .btn{min-height:40px}
 <section class="band alt" id="about"><div class="wrap about">
   <div>
     <div class="kicker">About</div>
-    <h2>Making synthetic subsurface data good enough to learn from</h2>
-    <p style="margin-top:18px">I'm a Ph.D. student in the <a href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a> at UT Austin, co-advised by <a href="https://michaelpyrcz.com/">Prof. Michael J. Pyrcz</a> and <a href="https://sites.google.com/utexas.edu/masha/home">Prof. Maša Prodanović</a>.</p>
-    <p>Subsurface behavior is controlled at very different scales, yet representative, well-characterized data is scarce at all of them. Micro-CT scans are costly and cover only a small part of a rock's heterogeneity. Seismic data is abundant, but the interpretation labels are slow, subjective, and usually limited to one task. My research builds generators for both scales, measures how representative their output is, and trains models that learn and transfer from it.</p>
-    <p>I train these models at scale on <a href="https://tacc.utexas.edu/">TACC</a> supercomputers with PyTorch and PyTorch Lightning.</p>
+    <p>I'm a Ph.D. student in the <a href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a> at UT Austin, co-advised by <a href="https://michaelpyrcz.com/">Prof. Michael J. Pyrcz</a> and <a href="https://sites.google.com/utexas.edu/masha/home">Prof. Maša Prodanović</a>.</p>
+    <p>Good subsurface data is scarce at every scale. I build generators that create realistic synthetic data, from rock pores to seismic volumes, and train AI models that learn from it.</p>
   </div>
   <div class="facts">
-    <div><span>Dissertation</span>Multi-Scale Subsurface Characterization: Generative Digital Rocks and a Seismic Foundation Model</div>
+    <div><span>Advisors</span>Michael J. Pyrcz · Maša Prodanović</div>
     <div><span>Research areas</span>Foundation models · Generative models · Synthetic data · Seismic interpretation · Digital rock physics · Uncertainty quantification</div>
     <div><span>Supported by</span>DiReCT Consortium · Digital Porous Media IAP · TACC</div>
   </div>
 </div></section>
 
-<section class="band" id="research"><div class="wrap">
-  <div class="kicker">Research</div>
-  <h2>Generate, characterize, then learn and transfer</h2>
-  <p class="lede">My dissertation tests whether synthetic data can fill the data gap at both the pore and the basin scale, if it is representative enough. It is organized into three objectives.</p>
+<section class="band" id="projects"><div class="wrap">
+  <div class="kicker">Projects</div>
+  <h2>What I'm working on</h2>
+  <p class="lede">Generative models and foundation models for the subsurface, from pore-scale digital rocks to basin-scale seismic.</p>
 
   <article class="obj-row">
     <figure class="fig"><div class="plate"><img src="images/fig_rf_samples.jpg" alt="Six generated 3D pore structures and a voxel-wise Shannon entropy map from 500 samples" loading="lazy"></div>
-      <figcaption>Generated 3D pore structures (left) and voxel-wise Shannon entropy across 500 samples (right).</figcaption></figure>
+      <figcaption>Generated 3D pore structures and their uncertainty map.</figcaption></figure>
     <div>
-      <span class="num">Objective 1 · Pore scale</span>
+      <span class="num">Digital rocks</span>
       <h3>Latent rectified flow for 3D digital rocks</h3>
-      <div class="with">With Runlong Liao, Maša Prodanović, and Michael J. Pyrcz</div>
-      <p>3D GANs tend to lose pore connectivity, and full-resolution 3D diffusion is computationally out of reach. I developed a two-stage latent generative framework:</p>
-      <ul>
-        <li>A <b>3D VAE</b> compresses 128³ rock volumes into a 16×32³ latent space with negligible reconstruction error.</li>
-        <li>A <b>rectified-flow ODE</b> generates new latents. Training is stable, and there are no diffusion schedules to tune.</li>
-        <li>It generates <b>a 3D Berea sandstone volume in about one second</b> on a single GPU.</li>
-      </ul>
-      <p>I evaluate the generated rocks on porosity, surface area, Euler characteristic, entropy-based uncertainty, and diversity. Next steps: conditioning on rock type and porosity across eleven sandstones, generating 256³ and 512³ volumes, and estimating network permeability.</p>
+      <p>A 3D VAE + rectified-flow model that generates realistic 3D rock microstructures in <b>about one second per volume</b> on a single GPU, evaluated on porosity, topology, uncertainty, and diversity.</p>
       <div class="chips"><span class="chip">VAE</span><span class="chip">Rectified flow</span><span class="chip">Micro-CT</span><span class="chip st">Paper in preparation</span></div>
     </div>
   </article>
 
   <article class="obj-row flip">
     <figure class="fig"><div class="plate"><img src="images/synseis_workflow.jpg" alt="SynSeis3D seven-stage workflow: basement, intervals, bedding, channels, faults, rock properties, and seismic" loading="lazy"></div>
-      <figcaption>The seven SynSeis3D stages: basement, intervals, bedding, channels, faults, rock physics, and seismic.</figcaption></figure>
+      <figcaption>From geology to seismic in seven steps.</figcaption></figure>
     <div>
-      <span class="num">Objective 2 · Basin scale</span>
+      <span class="num">Synthetic seismic</span>
       <h3>SynSeis3D: geology-aware synthetic seismic</h3>
-      <div class="with">With Misael M. Morales (ExxonMobil), Maša Prodanović, and Michael J. Pyrcz</div>
-      <p>An open procedural engine that builds geology step by step and forward-models the seismic. Every 3D volume comes with <b>co-registered labels for faults, channels, basement, and intervals</b>, with no manual annotation.</p>
-      <ul>
-        <li>Erosion-resolved sequence boundaries, onlap and truncation bedding, sinuous channels, and planar faults with consistent throw.</li>
-        <li>Depth-dependent rock physics, multi-frequency wavelets, attenuation, and migration-like noise.</li>
-        <li>A 230-volume corpus, characterized and compared with the <b>F3</b> and <b>Parihaka</b> field surveys.</li>
-      </ul>
+      <p>An open engine that builds 3D geology and forward-models the seismic, with <b>aligned labels for faults, channels, basement, and intervals</b> and no manual annotation.</p>
       <div class="chips"><span class="chip">Procedural geology</span><span class="chip">Forward modeling</span><span class="chip st">Submitted to Computers &amp; Geosciences</span></div>
       <div class="more"><a href="https://github.com/zhouqianqianalana/SynSeis3D">Code on GitHub →</a></div>
     </div>
@@ -265,26 +252,20 @@ footer .btns .btn{min-height:40px}
 
   <article class="obj-row">
     <figure class="fig"><div class="plate"><img src="images/sfm_segmentation.jpg" alt="Ground truth and predicted basement, channel, and fault segmentations on a synthetic seismic section" loading="lazy"></div>
-      <figcaption>Ground truth vs. predictions for basement, channels, and faults on a held-out synthetic section.</figcaption></figure>
+      <figcaption>Ground truth vs. predicted basement, channels, and faults.</figcaption></figure>
     <div>
-      <span class="num">Objective 3 · Learn &amp; transfer</span>
+      <span class="num">Seismic AI</span>
       <h3>A foundation model for seismic interpretation</h3>
-      <div class="with">With Misael M. Morales (ExxonMobil), Maša Prodanović, and Michael J. Pyrcz</div>
-      <p>Can synthetic data produce <b>reusable seismic representations that transfer to real surveys?</b> As a first result, a frozen SAM ViT-B encoder with a shared trunk and four task heads learns all four interpretation tasks jointly from about 12k synthetic slices. Basement reaches about 0.97 IoU, and the other tasks reach 0.55–0.65.</p>
-      <ul>
-        <li>Compare encoders (ResNet, ViT, SAM, SegFormer, DINO) and seismic-specific pretraining.</li>
-        <li>Test parameter-efficient adaptation (adapters, LoRA) against full fine-tuning.</li>
-        <li>Transfer from synthetic to field data on F3 and Parihaka, zero-shot and few-shot.</li>
-      </ul>
+      <p>A multi-task seismic interpretation model built on vision foundation models (SAM ViT) and trained on SynSeis3D data, aiming to <b>transfer to real field surveys</b>.</p>
       <div class="chips"><span class="chip">SAM ViT</span><span class="chip">Multi-task learning</span><span class="chip">LoRA</span><span class="chip st">IMAGE '26</span></div>
     </div>
   </article>
 
-  <h3 style="margin-top:28px">Earlier work</h3>
+  <h3 style="margin-top:28px">Earlier projects</h3>
   <div class="earlier">
-    <div class="card"><h4>3D flow fields in fractures (MS-Net)</h4><div class="when">UT Austin · 2025 · warm-up project</div><p>Predicted 3D velocity fields from fracture geometry with a multiscale network trained on lattice-Boltzmann simulations. Poster at IMAGE '25.</p></div>
-    <div class="card"><h4>Micro-proppant transport (CFD–DEM)</h4><div class="when">China Univ. of Petroleum, Beijing · 2022–2024</div><p>Key Python developer of a CFD–DEM fracture module for an NSFC project. Five papers, three conference talks, and a patent application.</p></div>
-    <div class="card"><h4>Proppant transport by supercritical CO₂</h4><div class="when">Southwest Petroleum Univ. · 2020–2021</div><p>Undergraduate thesis: CO₂ properties from the Span–Wagner equation of state, and proppant migration in branched fractures.</p></div>
+    <div class="card"><h4>3D flow fields in fractures (MS-Net)</h4><div class="when">UT Austin · 2025 · warm-up project</div><p>Neural prediction of 3D flow in fractures.</p></div>
+    <div class="card"><h4>Micro-proppant transport (CFD–DEM)</h4><div class="when">China Univ. of Petroleum, Beijing · 2022–2024</div><p>CFD–DEM simulation of proppant in rough fractures.</p></div>
+    <div class="card"><h4>Proppant transport by supercritical CO₂</h4><div class="when">Southwest Petroleum Univ. · 2020–2021</div><p>Undergraduate thesis on proppant transport.</p></div>
   </div>
 </div></section>
 
@@ -380,8 +361,9 @@ footer .btns .btn{min-height:40px}
 </div></section>
 
 <section class="band" id="background"><div class="wrap">
-  <div class="kicker">CV</div>
-  <h2>Background</h2>
+  <div class="kicker">Background</div>
+  <h2>Education &amp; experience</h2>
+  <p class="lede"><a href="files/CV_QianqianZhou.pdf">Download my full CV (PDF)</a></p>
   <div class="bg3">
     <div><h3>Education</h3>
       <div class="ed"><b>Ph.D., Petroleum &amp; Geosystems Engineering</b>The University of Texas at Austin<span>2024 – present</span></div>
